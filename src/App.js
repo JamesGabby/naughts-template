@@ -45,8 +45,6 @@ export default function Board() {
         return null
     }
 
-    
-
     return (
         <div>
             <div className='board-row'>
