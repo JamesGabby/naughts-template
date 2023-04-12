@@ -14,7 +14,7 @@ export default function Board() {
 
     const handleClick = (i) => {
         if (squares[i]) {
-            return;
+            return
         }
 
         const nextSquares = squares.slice()
