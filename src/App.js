@@ -8,7 +8,7 @@ const Square = ({ value, onSquareClick }) => {
     )
 }
 
-function Board({ xIsNext, squares, onPlay }) {
+function Board({ xIsNext, squares, onPlay, values }) {
     const handleClick = (i) => {
         if (squares[i] || calculateWinner(squares)) {
             return
@@ -42,18 +42,11 @@ function Board({ xIsNext, squares, onPlay }) {
 
     const winner = calculateWinner(squares)
     let status
-    let newSquares = []
-
-    for (let i = 0; i < squares.length-1; i++) {
-        if (squares[i] !== null) {
-            newSquares.push(squares[i])
-        }
-    }
 
     if (winner) {
         status = `Winner:  ${winner}!`
-    } else if (newSquares.length === 8) {
-        status = 'You drawed!'
+    } else if (!winner & values === 9) {
+        status = "Draw"
     } else {
         status = 'Next player: ' + (xIsNext ? 'X' : 'O')
     }
@@ -90,10 +83,12 @@ export default function Game() {
         setXIsNext(!xIsNext)
     }
 
+    const board = currentSquares.filter(square => square !== null)
+
     return (
         <div className="game">
             <div className="game-board">
-                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} values={board.length} />
             </div>
             <div className="game-info">
                 <ol>{/*TODO*/}</ol>
