@@ -42,7 +42,6 @@ function Board({ xIsNext, squares, onPlay, squareValues }) {
 
     const winner = calculateWinner(squares)
     let status
-
     if (winner) {
         status = `Winner:  ${winner}!`
     } else if (!winner & squareValues === 9) {
@@ -83,12 +82,12 @@ export default function Game() {
         setXIsNext(!xIsNext)
     }
 
-    const board = currentSquares.filter(square => square !== null)
+    const squareValues = currentSquares.filter(squareValue => squareValue !== null)
 
     return (
         <div className="game">
             <div className="game-board">
-                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} squareValues={board.length} />
+                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} squareValues={squareValues.length} />
             </div>
             <div className="game-info">
                 <ol>{/*TODO*/}</ol>
