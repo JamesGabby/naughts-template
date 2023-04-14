@@ -56,6 +56,10 @@ body {
   padding: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
 .square {
   background: #fff;
   border: 1px solid #999;
@@ -80,6 +84,7 @@ body {
 .status {
   margin-bottom: 10px;
 }
+
 .game {
   display: flex;
   flex-direction: row;
