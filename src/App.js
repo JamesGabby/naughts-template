@@ -15,7 +15,7 @@ function Board({ xIsNext, squares, onPlay, squareValues }) {
         }
         const nextSquares = squares.slice()
         nextSquares[i] = xIsNext ? 'X' : 'O'
-        onPlay(nextSquares)
+        onPlay(nextSquares);
     }
 
     const calculateWinner = (squares) => {
@@ -77,7 +77,7 @@ export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)])
     const [currentMove, setCurrentMove] = useState(0)
     const currentSquares = history[currentMove]
-    
+
     const squareValues = currentSquares.filter(squareValue => squareValue !== null)
 
     const handlePlay = (nextSquares) => {
