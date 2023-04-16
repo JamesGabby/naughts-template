@@ -85,6 +85,11 @@ button {
   margin-bottom: 10px;
 }
 
+.move {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
 .game {
   display: flex;
   flex-direction: row;
