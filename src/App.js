@@ -61,10 +61,10 @@ function Board({ xIsNext, squares, onPlay, move }) {
 
     const isWinningSquare = (i) => {
         if (winningSquare[0] === i || winningSquare[1] === i || winningSquare[2] === i) {
-            return true;
+            return true
         }
 
-        return false
+        return false;
     }
 
     return (
