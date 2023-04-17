@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 const Square = ({ value, onSquareClick, winningSquare }) => {
-    console.log(winningSquare)
     return (
         <button className='square' onClick={onSquareClick} style={{backgroundColor: winningSquare ? 'lightgreen' : '#fff'}}>
             {value}
@@ -9,7 +8,7 @@ const Square = ({ value, onSquareClick, winningSquare }) => {
     )
 }
 
-function Board({ xIsNext, squares, onPlay, move }) {
+function Board({ xIsNext, squares, onPlay, move, onReset }) {
     const handleClick = (i) => {
         if (squares[i] || calculateWinner(squares)) {
             return
@@ -86,6 +85,7 @@ function Board({ xIsNext, squares, onPlay, move }) {
                 <Square winningSquare={isWinningSquare(8)} value={squares[8]} onSquareClick={() => handleClick(8)} />
             </div>
             <div className='move'>You are at move: {move}</div>
+            <button onClick={onReset}>Reset</button>
         </div>
     )
 }
@@ -100,6 +100,11 @@ export default function Game() {
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares]
         setHistory(nextHistory)
         setCurrentMove(nextHistory.length - 1)
+    }
+
+    const handleReset = () => {
+        setCurrentMove(0)
+        setHistory([Array(9).fill('')])
     }
 
     function jumpTo(nextMove) {
@@ -129,6 +134,7 @@ export default function Game() {
                     xIsNext={xIsNext} 
                     squares={currentSquares} 
                     onPlay={handlePlay} 
+                    onReset={handleReset}
                     move={currentMove}
                 />
             </div>
