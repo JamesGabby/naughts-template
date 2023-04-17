@@ -63,7 +63,7 @@ function Board({ xIsNext, squares, onPlay, move, onReset }) {
             return true
         }
 
-        return false;
+        return false
     }
 
     return (
